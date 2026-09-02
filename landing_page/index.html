@@ -1,0 +1,2595 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Reconquista — um guia prático em 3 fases para organizar suas ações, evitar decisões impulsivas e conduzir uma possível retomada de contato com respeito.">
+
+    <meta name="theme-color" content="#131110">
+
+    <meta property="og:title" content="Reconquista — Pare de improvisar">
+    <meta property="og:description"
+        content="Um guia prático em 3 fases para organizar suas ações depois de um término.">
+    <meta property="og:type" content="website">
+
+    <title>Reconquista — Pare de improvisar</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Manrope:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           FUNDAÇÃO
+           ============================================================ */
+
+        :root {
+            --ink: hsl(38 9% 7%);
+            --ink-raised: hsl(38 8% 11%);
+            --ink-overlay: hsl(38 8% 15%);
+            --line: hsl(38 7% 19%);
+            --line-strong: hsl(38 8% 27%);
+
+            --text: hsl(38 14% 93%);
+            --text-dim: hsl(38 8% 64%);
+            --text-faint: hsl(38 7% 47%);
+
+            --brass: hsl(32 68% 52%);
+            --brass-deep: hsl(28 62% 42%);
+            --brass-ink: hsl(34 40% 8%);
+
+            --font-display: 'Archivo', system-ui, sans-serif;
+            --font-body: 'Manrope', system-ui, sans-serif;
+
+            --ease: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--ink);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-display);
+            margin: 0;
+            text-wrap: balance;
+        }
+
+        h1 {
+            font-size: clamp(2.25rem, 8vw, 4.6rem);
+            font-weight: 800;
+            line-height: 1.01;
+            letter-spacing: -0.04em;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+        }
+
+        h3 {
+            font-size: 1.18rem;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -0.015em;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        strong {
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .wrap {
+            width: 100%;
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 1.35rem;
+        }
+
+        .narrow {
+            max-width: 780px;
+        }
+
+        section {
+            position: relative;
+        }
+
+        .eyebrow {
+            display: block;
+            color: var(--text-faint);
+            font-family: var(--font-display);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .lede {
+            color: var(--text-dim);
+            font-size: 1.075rem;
+            line-height: 1.68;
+        }
+
+        /* ============================================================
+           BOTÕES
+           ============================================================ */
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+
+            padding: 1.075rem 1.7rem;
+
+            border: 1px solid transparent;
+            border-radius: 4px;
+
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-decoration: none;
+
+            cursor: pointer;
+
+            transition:
+                background-color 200ms var(--ease),
+                transform 140ms var(--ease),
+                border-color 200ms var(--ease);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn:focus-visible {
+            outline: 2px solid var(--brass);
+            outline-offset: 3px;
+        }
+
+        .btn-primary {
+            background-color: var(--brass);
+            color: var(--brass-ink);
+        }
+
+        .btn-ghost {
+            background-color: transparent;
+            color: var(--text);
+            border-color: var(--line-strong);
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        .btn-sm {
+            padding: 0.66rem 1.1rem;
+            font-size: 0.88rem;
+        }
+
+        .cta-note {
+            color: var(--text-faint);
+            font-size: 0.82rem;
+            line-height: 1.5;
+        }
+
+        @media (pointer: fine) {
+            .btn-primary:hover {
+                background-color: hsl(32 72% 58%);
+            }
+
+            .btn-ghost:hover {
+                border-color: var(--text-dim);
+                background-color: var(--ink-raised);
+            }
+        }
+
+        /* ============================================================
+           HEADER
+           ============================================================ */
+
+        .site-head {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+
+            background-color: hsl(38 9% 7% / 0.94);
+            border-bottom: 1px solid var(--line);
+
+            backdrop-filter: blur(12px);
+        }
+
+        .head-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            min-height: 62px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.42rem;
+
+            font-family: var(--font-display);
+            font-size: 1.06rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            text-decoration: none;
+        }
+
+        .brand-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: var(--brass);
+        }
+
+        .head-nav {
+            display: none;
+            gap: 1.7rem;
+
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .head-nav a {
+            text-decoration: none;
+            transition: color 180ms var(--ease);
+        }
+
+        @media (min-width: 900px) {
+            .head-nav {
+                display: flex;
+            }
+        }
+
+        @media (pointer: fine) {
+            .head-nav a:hover {
+                color: var(--text);
+            }
+        }
+
+        /* ============================================================
+           HERO
+           ============================================================ */
+
+        .hero {
+            padding: 4rem 0 4.5rem;
+            border-bottom: 1px solid var(--line);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    120% 78% at 88% -8%,
+                    hsl(32 55% 30% / 0.19),
+                    transparent 62%
+                );
+
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            position: relative;
+
+            display: grid;
+            gap: 3rem;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+
+            padding: 0.36rem 0.85rem 0.36rem 0.7rem;
+
+            border: 1px solid var(--line-strong);
+            border-radius: 100px;
+
+            color: var(--text-dim);
+
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.045em;
+            text-transform: uppercase;
+        }
+
+        .hero-tag span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--brass);
+        }
+
+        .hero h1 {
+            margin-top: 1.5rem;
+        }
+
+        .hero h1 em {
+            color: var(--brass);
+            font-style: normal;
+        }
+
+        .hero-sub {
+            max-width: 37ch;
+            margin-top: 1.4rem;
+
+            color: var(--text-dim);
+
+            font-size: 1.12rem;
+            line-height: 1.65;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.85rem;
+
+            margin-top: 2.1rem;
+        }
+
+        .hero-facts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+
+            margin-top: 2.4rem;
+            padding-top: 1.5rem;
+
+            border-top: 1px solid var(--line);
+        }
+
+        .hero-facts div {
+            color: var(--text-faint);
+            font-size: 0.795rem;
+            line-height: 1.4;
+        }
+
+        .hero-facts b {
+            display: block;
+
+            margin-bottom: 0.15rem;
+
+            color: var(--text);
+
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 800;
+        }
+
+        /* ============================================================
+           BOOK MOCKUP
+           ============================================================ */
+
+        .book-stage {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+            min-height: 440px;
+        }
+
+        .book {
+            position: relative;
+
+            width: 285px;
+            min-height: 390px;
+
+            padding: 2rem 1.65rem;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    hsl(32 55% 17%),
+                    hsl(28 40% 10%)
+                );
+
+            border: 1px solid var(--brass-deep);
+            border-radius: 5px 12px 12px 5px;
+
+            box-shadow:
+                18px 25px 55px hsl(0 0% 0% / 0.5),
+                inset 5px 0 0 hsl(0 0% 100% / 0.035);
+
+            transform: rotate(2deg);
+        }
+
+        .book::before {
+            content: "";
+
+            position: absolute;
+            left: 9px;
+            top: 0;
+            bottom: 0;
+
+            width: 1px;
+
+            background: hsl(32 68% 52% / 0.3);
+        }
+
+        .book-kicker {
+            color: var(--brass);
+
+            font-family: var(--font-display);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.17em;
+            text-transform: uppercase;
+        }
+
+        .book-title {
+            margin-top: 1.4rem;
+
+            font-family: var(--font-display);
+            font-size: 2.4rem;
+            font-weight: 900;
+            line-height: 0.96;
+            letter-spacing: -0.045em;
+        }
+
+        .book-title span {
+            color: var(--brass);
+        }
+
+        .book-subtitle {
+            margin-top: 1.3rem;
+
+            color: var(--text-dim);
+
+            font-size: 0.85rem;
+            line-height: 1.55;
+        }
+
+        .book-line {
+            width: 55px;
+            height: 2px;
+
+            margin-top: 2rem;
+
+            background-color: var(--brass);
+        }
+
+        .book-bottom {
+            position: absolute;
+            left: 1.65rem;
+            right: 1.65rem;
+            bottom: 1.65rem;
+
+            padding-top: 1rem;
+
+            border-top: 1px solid hsl(38 8% 27%);
+
+            color: var(--text-faint);
+
+            font-family: var(--font-display);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .book-badge {
+            position: absolute;
+            right: -2rem;
+            bottom: 3.5rem;
+
+            width: 145px;
+
+            padding: 0.8rem 0.9rem;
+
+            background-color: var(--ink-overlay);
+
+            border: 1px solid var(--line-strong);
+            border-radius: 8px;
+
+            box-shadow: 0 15px 35px hsl(0 0% 0% / 0.5);
+        }
+
+        .book-badge b {
+            display: block;
+
+            color: var(--brass);
+
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+        }
+
+        .book-badge p {
+            margin-top: 0.25rem;
+
+            color: var(--text-dim);
+
+            font-size: 0.72rem;
+            line-height: 1.4;
+        }
+
+        /* ============================================================
+           O PROBLEMA
+           ============================================================ */
+
+        .problem {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--line);
+            background-color: hsl(38 9% 8%);
+        }
+
+        .problem-list {
+            display: grid;
+            gap: 0;
+
+            margin-top: 2.3rem;
+        }
+
+        .problem-item {
+            display: grid;
+            gap: 0.6rem;
+
+            padding: 1.5rem 0;
+
+            border-top: 1px solid var(--line);
+        }
+
+        .problem-item:last-child {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .problem-item h3 {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+        }
+
+        .problem-item h3 i {
+            flex: 0 0 auto;
+
+            color: var(--text-faint);
+
+            font-size: 0.78rem;
+            font-style: normal;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .problem-item p {
+            color: var(--text-dim);
+
+            font-size: 0.96rem;
+            line-height: 1.6;
+        }
+
+        .problem-close {
+            max-width: 52ch;
+
+            margin-top: 2.1rem;
+
+            font-family: var(--font-display);
+            font-size: 1.12rem;
+            font-weight: 700;
+            line-height: 1.45;
+        }
+
+        /* ============================================================
+           MÉTODO — 3 FASES
+           ============================================================ */
+
+        .phases {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .section-head {
+            max-width: 680px;
+        }
+
+        .section-head h2 {
+            margin-top: 0.85rem;
+        }
+
+        .section-head p {
+            margin-top: 1.1rem;
+        }
+
+        .phase-list {
+            display: grid;
+            gap: 1.15rem;
+
+            margin-top: 2.5rem;
+        }
+
+        .phase {
+            padding: 1.55rem 1.4rem;
+
+            background-color: var(--ink-raised);
+
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .phase-num {
+            color: var(--brass);
+
+            font-family: var(--font-display);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .phase h3 {
+            margin-top: 0.65rem;
+            font-size: 1.4rem;
+        }
+
+        .phase > p {
+            margin-top: 0.7rem;
+
+            color: var(--text-dim);
+
+            font-size: 0.94rem;
+            line-height: 1.6;
+        }
+
+        .tools {
+            display: grid;
+            gap: 0.7rem;
+
+            margin-top: 1.25rem;
+            padding-top: 1.15rem;
+
+            border-top: 1px solid var(--line);
+        }
+
+        .tools-label {
+            color: var(--text-faint);
+
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .tool {
+            display: flex;
+            gap: 0.65rem;
+
+            color: var(--text-dim);
+
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .tool::before {
+            content: "";
+
+            flex: 0 0 auto;
+
+            width: 5px;
+            height: 5px;
+
+            margin-top: 0.55rem;
+
+            border-radius: 50%;
+
+            background-color: var(--brass-deep);
+        }
+
+        .tool b {
+            color: var(--text);
+        }
+
+        /* ============================================================
+           O QUE VOCÊ RECEBE
+           ============================================================ */
+
+        .included {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--line);
+            background-color: hsl(38 9% 8%);
+        }
+
+        .included-grid {
+            display: grid;
+            gap: 1rem;
+
+            margin-top: 2.5rem;
+        }
+
+        .included-card {
+            padding: 1.4rem 1.3rem;
+
+            border: 1px solid var(--line);
+            border-radius: 10px;
+
+            background-color: var(--ink);
+        }
+
+        .included-num {
+            color: var(--brass);
+
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+        }
+
+        .included-card h3 {
+            margin-top: 0.65rem;
+        }
+
+        .included-card p {
+            margin-top: 0.55rem;
+
+            color: var(--text-dim);
+
+            font-size: 0.88rem;
+            line-height: 1.55;
+        }
+
+        /* ============================================================
+           CHECKLIST
+           ============================================================ */
+
+        .checklist {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .checklist-layout {
+            display: grid;
+            gap: 2.5rem;
+
+            margin-top: 2.5rem;
+        }
+
+        .check-panel {
+            padding: 1.4rem;
+
+            background-color: var(--ink-raised);
+
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .check-title {
+            margin-bottom: 1rem;
+
+            color: var(--brass);
+
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .check {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+
+            padding: 0.65rem 0;
+
+            border-bottom: 1px solid var(--line);
+
+            color: var(--text-dim);
+
+            font-size: 0.84rem;
+            line-height: 1.45;
+        }
+
+        .check:last-child {
+            border-bottom: 0;
+        }
+
+        .box {
+            flex: 0 0 auto;
+
+            width: 15px;
+            height: 15px;
+
+            margin-top: 0.12rem;
+
+            border: 1px solid var(--line-strong);
+            border-radius: 3px;
+        }
+
+        .check.done .box {
+            position: relative;
+
+            background-color: var(--brass);
+            border-color: var(--brass);
+        }
+
+        .check.done .box::after {
+            content: "";
+
+            position: absolute;
+            left: 4px;
+            top: 1px;
+
+            width: 4px;
+            height: 8px;
+
+            border-right: 2px solid var(--brass-ink);
+            border-bottom: 2px solid var(--brass-ink);
+
+            transform: rotate(40deg);
+        }
+
+        /* ============================================================
+           MENSAGENS
+           ============================================================ */
+
+        .messages {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--line);
+            background-color: hsl(38 9% 8%);
+        }
+
+        .message-demo {
+            max-width: 650px;
+
+            margin-top: 2.5rem;
+        }
+
+        .message {
+            padding: 1rem 1.05rem;
+
+            margin-bottom: 0.8rem;
+
+            background-color: var(--ink-raised);
+
+            border: 1px solid var(--line);
+            border-radius: 9px;
+        }
+
+        .message-label {
+            display: block;
+
+            margin-bottom: 0.45rem;
+
+            color: var(--brass);
+
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+        }
+
+        .message p {
+            color: var(--text-dim);
+
+            font-size: 0.88rem;
+            line-height: 1.55;
+        }
+
+        .message-note {
+            margin-top: 1.2rem;
+
+            color: var(--text-faint);
+
+            font-size: 0.78rem;
+            line-height: 1.55;
+        }
+
+        /* ============================================================
+           PARA QUEM É
+           ============================================================ */
+
+        .audience {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .audience-grid {
+            display: grid;
+            gap: 1rem;
+
+            margin-top: 2.5rem;
+        }
+
+        .audience-card {
+            padding: 1.5rem 1.35rem;
+
+            border: 1px solid var(--line);
+            border-radius: 10px;
+        }
+
+        .audience-card.good {
+            border-color: var(--brass-deep);
+            background-color: var(--ink-raised);
+        }
+
+        .audience-card span {
+            display: block;
+
+            margin-bottom: 0.6rem;
+
+            color: var(--text-faint);
+
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .audience-card.good span {
+            color: var(--brass);
+        }
+
+        .audience-card ul {
+            display: grid;
+            gap: 0.65rem;
+        }
+
+        .audience-card li {
+            display: flex;
+            gap: 0.6rem;
+
+            color: var(--text-dim);
+
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .audience-card.good li::before {
+            content: "+";
+
+            color: var(--brass);
+            font-weight: 800;
+        }
+
+        .audience-card:not(.good) li::before {
+            content: "—";
+
+            color: var(--line-strong);
+        }
+
+        /* ============================================================
+           OFERTA
+           ============================================================ */
+
+        .pricing {
+            padding: 4.5rem 0;
+            border-bottom: 1px solid var(--line);
+            background-color: hsl(38 9% 8%);
+        }
+
+        .offer {
+            max-width: 720px;
+
+            margin-top: 2.5rem;
+            padding: 2rem 1.5rem;
+
+            background-color: var(--ink);
+
+            border: 1px solid var(--brass-deep);
+            border-radius: 12px;
+
+            box-shadow: 0 25px 60px hsl(0 0% 0% / 0.22);
+        }
+
+        .offer-label {
+            color: var(--brass);
+
+            font-family: var(--font-display);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .price {
+            display: flex;
+            align-items: baseline;
+            gap: 0.45rem;
+
+            margin-top: 0.8rem;
+
+            font-family: var(--font-display);
+        }
+
+        .price b {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            line-height: 1;
+        }
+
+        .price span {
+            color: var(--text-faint);
+
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .offer-sub {
+            max-width: 48ch;
+
+            margin-top: 0.8rem;
+
+            color: var(--text-dim);
+
+            font-size: 0.9rem;
+            line-height: 1.55;
+        }
+
+        .offer-list {
+            display: grid;
+            gap: 0.65rem;
+
+            margin: 1.5rem 0;
+            padding-top: 1.3rem;
+
+            border-top: 1px solid var(--line);
+        }
+
+        .offer-list li {
+            display: flex;
+            gap: 0.6rem;
+
+            color: var(--text-dim);
+
+            font-size: 0.9rem;
+            line-height: 1.45;
+        }
+
+        .offer-list li::before {
+            content: "+";
+
+            flex: 0 0 auto;
+
+            color: var(--brass);
+
+            font-weight: 800;
+        }
+
+        .offer-note {
+            margin-top: 0.9rem;
+
+            color: var(--text-faint);
+
+            font-size: 0.78rem;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        /* ============================================================
+           FAQ
+           ============================================================ */
+
+        .faq {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .faq-list {
+            max-width: 760px;
+
+            margin-top: 2rem;
+
+            border-top: 1px solid var(--line);
+        }
+
+        details {
+            border-bottom: 1px solid var(--line);
+        }
+
+        summary {
+            position: relative;
+
+            padding: 1.2rem 2.4rem 1.2rem 0;
+
+            cursor: pointer;
+            list-style: none;
+
+            font-family: var(--font-display);
+            font-size: 1.03rem;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "";
+
+            position: absolute;
+            right: 0.35rem;
+            top: 1.5rem;
+
+            width: 9px;
+            height: 9px;
+
+            border-right: 2px solid var(--text-faint);
+            border-bottom: 2px solid var(--text-faint);
+
+            transform: rotate(45deg);
+
+            transition:
+                transform 240ms var(--ease),
+                border-color 240ms var(--ease);
+        }
+
+        details[open] summary::after {
+            border-color: var(--brass);
+            transform: rotate(-135deg);
+        }
+
+        details p {
+            max-width: 65ch;
+
+            padding: 0 0 1.35rem;
+
+            color: var(--text-dim);
+
+            font-size: 0.95rem;
+            line-height: 1.68;
+        }
+
+        /* ============================================================
+           CTA FINAL
+           ============================================================ */
+
+        .final {
+            padding: 5rem 0 4rem;
+            overflow: hidden;
+        }
+
+        .final::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    105% 70% at 50% 108%,
+                    hsl(32 55% 30% / 0.22),
+                    transparent 64%
+                );
+
+            pointer-events: none;
+        }
+
+        .final-inner {
+            position: relative;
+            max-width: 700px;
+        }
+
+        .final h2 {
+            margin-top: 0.9rem;
+        }
+
+        .final p {
+            margin-top: 1.15rem;
+        }
+
+        .final-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+
+            margin-top: 2rem;
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+
+        .site-foot {
+            padding: 2.4rem 0 3rem;
+
+            border-top: 1px solid var(--line);
+
+            background-color: hsl(38 9% 8%);
+        }
+
+        .foot-top {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.1rem 1.8rem;
+        }
+
+        .foot-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+
+            color: var(--text-dim);
+
+            font-size: 0.85rem;
+        }
+
+        .foot-links a {
+            text-decoration: none;
+        }
+
+        .disclaimer {
+            max-width: 76ch;
+
+            margin-top: 2rem;
+            padding-top: 1.6rem;
+
+            border-top: 1px solid var(--line);
+
+            color: var(--text-faint);
+
+            font-size: 0.815rem;
+            line-height: 1.65;
+        }
+
+        .disclaimer b {
+            color: var(--text-dim);
+        }
+
+        .copyright {
+            margin-top: 1.2rem;
+
+            color: var(--text-faint);
+
+            font-size: 0.78rem;
+        }
+
+        /* ============================================================
+           ANIMAÇÃO
+           ============================================================ */
+
+        .rise {
+            animation: rise 620ms var(--ease) both;
+        }
+
+        .d1 {
+            animation-delay: 60ms;
+        }
+
+        .d2 {
+            animation-delay: 130ms;
+        }
+
+        .d3 {
+            animation-delay: 200ms;
+        }
+
+        .d4 {
+            animation-delay: 280ms;
+        }
+
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ============================================================
+           DESKTOP
+           ============================================================ */
+
+        @media (min-width: 800px) {
+
+            .problem,
+            .phases,
+            .included,
+            .checklist,
+            .messages,
+            .audience,
+            .faq {
+                padding: 5rem 0;
+            }
+
+            .problem-item {
+                grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+                gap: 2.5rem;
+                align-items: start;
+
+                padding: 1.85rem 0;
+            }
+
+            .included-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .audience-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .checklist-layout {
+                grid-template-columns: 1fr 1fr;
+                align-items: start;
+            }
+
+            .final-actions {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .offer {
+                padding: 2.3rem;
+            }
+        }
+
+        @media (min-width: 860px) {
+
+            .hero {
+                padding: 5.5rem 0 5.2rem;
+            }
+
+            .hero-inner {
+                grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+                align-items: center;
+                gap: 3.5rem;
+            }
+
+            .hero-actions {
+                flex-direction: row;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+            .hero-actions .cta-note {
+                flex-basis: 100%;
+            }
+
+            .phase-list {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.1rem;
+            }
+
+            .phase {
+                padding: 1.85rem 1.6rem;
+            }
+        }
+
+        @media (min-width: 960px) {
+
+            .included-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .book {
+                width: 310px;
+                min-height: 425px;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .hero-facts {
+                gap: 0.65rem;
+            }
+
+            .hero-facts b {
+                font-size: 1rem;
+            }
+
+            .book {
+                width: 255px;
+                min-height: 365px;
+            }
+
+            .book-badge {
+                right: -0.5rem;
+                bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============================================================
+         HEADER
+         ============================================================ -->
+
+    <header class="site-head">
+        <div class="wrap head-inner">
+
+            <a class="brand" href="#top">
+                Reconquista<span class="brand-dot"></span>
+            </a>
+
+            <nav class="head-nav" aria-label="Seções da página">
+                <a href="#problema">O problema</a>
+                <a href="#metodo">O método</a>
+                <a href="#conteudo">Conteúdo</a>
+                <a href="#faq">Dúvidas</a>
+            </nav>
+
+            <a class="btn btn-primary btn-sm" href="#oferta">
+                Quero o guia
+            </a>
+
+        </div>
+    </header>
+
+
+    <main id="top">
+
+        <!-- ========================================================
+             HERO
+             ======================================================== -->
+
+        <section class="hero">
+
+            <div class="wrap hero-inner">
+
+                <div>
+
+                    <p class="hero-tag rise">
+                        <span></span>
+                        Guia prático · 3 fases
+                    </p>
+
+                    <h1 class="rise d1">
+                        Você não precisa de mais um conselho.
+                        <br>
+                        <em>Precisa de um plano.</em>
+                    </h1>
+
+                    <p class="hero-sub rise d2">
+                        Reconquista é um guia prático para organizar o que fazer
+                        depois de um término, reduzir decisões impulsivas e
+                        entender quando faz sentido tentar uma retomada de contato.
+                    </p>
+
+                    <div class="hero-actions rise d3">
+
+                        <a class="btn btn-primary" href="https://pay.kiwify.com.br/ABN2Zqr">
+                            Quero começar agora
+                        </a>
+
+                        <a class="btn btn-ghost" href="https://pay.kiwify.com.br/ABN2Zqr">
+                            Conhecer as 3 fases
+                        </a>
+
+                        <p class="cta-note">
+                            Acesso digital imediato · Leia no celular, tablet ou computador.
+                        </p>
+
+                    </div>
+
+                    <div class="hero-facts rise d4">
+
+                        <div>
+                            <b>3 fases</b>
+                            do término à possível retomada
+                        </div>
+
+                        <div>
+                            <b>17 partes</b>
+                            de conteúdo prático
+                        </div>
+
+                        <div>
+                            <b>+ ferramentas</b>
+                            exercícios, checklists e modelos
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MOCKUP DO E-BOOK -->
+
+                <div class="book-stage rise d3">
+
+                    <div class="book">
+
+                        <p class="book-kicker">
+                            Guia prático
+                        </p>
+
+                        <div class="book-title">
+                            RECON<span>QUISTA</span>
+                        </div>
+
+                        <p class="book-subtitle">
+                            Um método em 3 fases para sair da
+                            improvisação, organizar suas ações e
+                            conduzir uma possível retomada com respeito.
+                        </p>
+
+                        <div class="book-line"></div>
+
+                        <div class="book-bottom">
+                            Estratégia · reflexão · comunicação
+                        </div>
+
+                    </div>
+
+                    <div class="book-badge">
+                        <b>3 FASES</b>
+                        <p>
+                            Corte de contato,
+                            reconstrução e retomada.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             PROBLEMA
+             ======================================================== -->
+
+        <section class="problem" id="problema">
+
+            <div class="wrap">
+
+                <div class="section-head">
+
+                    <span class="eyebrow">
+                        Reconhece?
+                    </span>
+
+                    <h2>
+                        O término aconteceu.
+                        O problema é o que você faz depois.
+                    </h2>
+
+                </div>
+
+
+                <div class="problem-list">
+
+                    <article class="problem-item">
+
+                        <h3>
+                            <i>01</i>
+                            Você quer resolver tudo de uma vez
+                        </h3>
+
+                        <p>
+                            Uma mensagem vira três. Uma explicação vira um
+                            texto enorme. A vontade de consertar tudo imediatamente
+                            acaba tomando decisões que você talvez não tomaria com
+                            a cabeça mais tranquila.
+                        </p>
+
+                    </article>
+
+
+                    <article class="problem-item">
+
+                        <h3>
+                            <i>02</i>
+                            Cada pessoa dá um conselho diferente
+                        </h3>
+
+                        <p>
+                            Um amigo manda procurar. Outro manda desaparecer.
+                            Um vídeo recomenda esperar. Outro diz para falar tudo.
+                            Você fica com várias opiniões e nenhuma estrutura.
+                        </p>
+
+                    </article>
+
+
+                    <article class="problem-item">
+
+                        <h3>
+                            <i>03</i>
+                            Você não sabe qual deveria ser o próximo passo
+                        </h3>
+
+                        <p>
+                            É difícil distinguir uma atitude útil de uma reação
+                            emocional quando tudo ainda está recente.
+                        </p>
+
+                    </article>
+
+
+                    <article class="problem-item">
+
+                        <h3>
+                            <i>04</i>
+                            Você pensa mais na outra pessoa do que no que precisa mudar
+                        </h3>
+
+                        <p>
+                            Uma possível retomada não começa apenas com uma
+                            mensagem. Também envolve entender o que aconteceu,
+                            rever padrões e recuperar uma rotina própria.
+                        </p>
+
+                    </article>
+
+                </div>
+
+
+                <p class="problem-close">
+                    O objetivo deste guia não é ensinar você a controlar outra pessoa.
+                    É ajudar você a controlar melhor <strong>as próprias decisões</strong>.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             MÉTODO
+             ======================================================== -->
+
+        <section class="phases" id="metodo">
+
+            <div class="wrap">
+
+                <div class="section-head">
+
+                    <span class="eyebrow">
+                        O método
+                    </span>
+
+                    <h2>
+                        Três fases para parar de agir no improviso.
+                    </h2>
+
+                    <p class="lede">
+                        Em vez de procurar uma frase mágica, você percorre
+                        uma sequência de reflexão, organização e comunicação.
+                    </p>
+
+                </div>
+
+
+                <div class="phase-list">
+
+                    <article class="phase">
+
+                        <p class="phase-num">
+                            Fase 1 · Pausa
+                        </p>
+
+                        <h3>
+                            Parar de piorar
+                        </h3>
+
+                        <p>
+                            Antes de pensar em reconquistar alguém,
+                            é preciso diminuir a impulsividade e entender
+                            o cenário em que você está.
+                        </p>
+
+                        <div class="tools">
+
+                            <p class="tools-label">
+                                Você trabalha com
+                            </p>
+
+                            <p class="tool">
+                                <span>
+                                    <b>Diagnóstico inicial</b>
+                                    para organizar o contexto do término.
+                                </span>
+                            </p>
+
+                            <p class="tool">
+                                <span>
+                                    <b>Exercícios de reflexão</b>
+                                    para identificar comportamentos e gatilhos.
+                                </span>
+                            </p>
+
+                            <p class="tool">
+                                <span>
+                                    <b>Checklist da fase</b>
+                                    para transformar intenção em ação.
+                                </span>
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="phase">
+
+                        <p class="phase-num">
+                            Fase 2 · Reconstrução
+                        </p>
+
+                        <h3>
+                            Voltar a organizar sua própria vida
+                        </h3>
+
+                        <p>
+                            Uma possível reconexão não deve depender de
+                            promessas feitas no calor do término. Esta fase
+                            trabalha rotina, responsabilidade e mudanças reais.
+                        </p>
+
+                        <div class="tools">
+
+                            <p class="tools-label">
+                                Você trabalha com
+                            </p>
+
+                            <p class="tool">
+                                <span>
+                                    <b>Exercícios de reconstrução</b>
+                                    divididos em áreas importantes da vida.
+                                </span>
+                            </p>
+
+                            <p class="tool">
+                                <span>
+                                    <b>Checklists práticos</b>
+                                    para acompanhar o que está sendo colocado em prática.
+                                </span>
+                            </p>
+
+                            <p class="tool">
+                                <span>
+                                    <b>Revisão do relacionamento</b>
+                                    sem transformar tudo em culpa.
+                                </span>
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="phase">
+
+                        <p class="phase-num">
+                            Fase 3 · Retomada
+                        </p>
+
+                        <h3>
+                            Comunicar com clareza e respeito
+                        </h3>
+
+                        <p>
+                            Se existir espaço para uma retomada, esta fase
+                            ajuda a pensar no contato, na comunicação e também
+                            nos limites que precisam ser respeitados.
+                        </p>
+
+                        <div class="tools">
+
+                            <p class="tools-label">
+                                Você trabalha com
+                            </p>
+
+                            <p class="tool">
+                                <span>
+                                    <b>Biblioteca de mensagens</b>
+                                    organizada por diferentes situações.
+                                </span>
+                            </p>
+
+                            <p class="tool">
+                                <span>
+                                    <b>Orientações de comunicação</b>
+                                    para evitar pressão e insistência.
+                                </span>
+                            </p>
+
+                            <p class="tool">
+                                <span>
+                                    <b>Matriz de decisão</b>
+                                    para avaliar quando avançar, esperar ou parar.
+                                </span>
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             CONTEÚDO
+             ======================================================== -->
+
+        <section class="included" id="conteudo">
+
+            <div class="wrap">
+
+                <div class="section-head">
+
+                    <span class="eyebrow">
+                        O que você recebe
+                    </span>
+
+                    <h2>
+                        Não é só um texto. É um material para trabalhar.
+                    </h2>
+
+                    <p class="lede">
+                        O guia foi estruturado para você ler, parar,
+                        responder aos exercícios e voltar às ferramentas
+                        quando precisar.
+                    </p>
+
+                </div>
+
+
+                <div class="included-grid">
+
+                    <article class="included-card">
+                        <p class="included-num">01</p>
+                        <h3>Diagnóstico inicial</h3>
+                        <p>
+                            Entenda o cenário antes de decidir qual será
+                            seu próximo movimento.
+                        </p>
+                    </article>
+
+
+                    <article class="included-card">
+                        <p class="included-num">02</p>
+                        <h3>3 fases estruturadas</h3>
+                        <p>
+                            Um caminho dividido em pausa, reconstrução
+                            e possível retomada.
+                        </p>
+                    </article>
+
+
+                    <article class="included-card">
+                        <p class="included-num">03</p>
+                        <h3>Exercícios práticos</h3>
+                        <p>
+                            Perguntas e atividades para transformar
+                            reflexão em mudança concreta.
+                        </p>
+                    </article>
+
+
+                    <article class="included-card">
+                        <p class="included-num">04</p>
+                        <h3>Checklists</h3>
+                        <p>
+                            Listas simples para acompanhar o que você
+                            precisa fazer em cada etapa.
+                        </p>
+                    </article>
+
+
+                    <article class="included-card">
+                        <p class="included-num">05</p>
+                        <h3>Biblioteca de mensagens</h3>
+                        <p>
+                            Modelos organizados por contexto, para você
+                            adaptar sem depender de frases mágicas.
+                        </p>
+                    </article>
+
+
+                    <article class="included-card">
+                        <p class="included-num">06</p>
+                        <h3>Matriz de decisão</h3>
+                        <p>
+                            Um instrumento para pensar com mais clareza
+                            antes de tomar decisões importantes.
+                        </p>
+                    </article>
+
+
+                    <article class="included-card">
+                        <p class="included-num">07</p>
+                        <h3>FAQ completo</h3>
+                        <p>
+                            Respostas para as dúvidas mais comuns durante
+                            o processo.
+                        </p>
+                    </article>
+
+
+                    <article class="included-card">
+                        <p class="included-num">08</p>
+                        <h3>Checklist de 1 página</h3>
+                        <p>
+                            Uma versão rápida para consultar sem precisar
+                            reler o material inteiro.
+                        </p>
+                    </article>
+
+
+                    <article class="included-card">
+                        <p class="included-num">09</p>
+                        <h3>Plano de continuidade</h3>
+                        <p>
+                            Um fechamento para ajudar você a continuar
+                            aplicando o que aprendeu.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             CHECKLIST
+             ======================================================== -->
+
+        <section class="checklist">
+
+            <div class="wrap">
+
+                <div class="section-head">
+
+                    <span class="eyebrow">
+                        Na prática
+                    </span>
+
+                    <h2>
+                        Você não precisa memorizar o método.
+                    </h2>
+
+                    <p class="lede">
+                        O material transforma ideias abstratas em pequenas
+                        ações que você consegue revisar ao longo do processo.
+                    </p>
+
+                </div>
+
+
+                <div class="checklist-layout">
+
+                    <div class="check-panel">
+
+                        <p class="check-title">
+                            Exemplo de checklist
+                        </p>
+
+                        <div class="check done">
+                            <span class="box"></span>
+                            Identifiquei o principal gatilho que me faz agir por impulso.
+                        </div>
+
+                        <div class="check done">
+                            <span class="box"></span>
+                            Revisei como o relacionamento terminou.
+                        </div>
+
+                        <div class="check">
+                            <span class="box"></span>
+                            Anotei um comportamento que preciso mudar.
+                        </div>
+
+                        <div class="check">
+                            <span class="box"></span>
+                            Revisei se existe espaço real para contato.
+                        </div>
+
+                        <div class="check">
+                            <span class="box"></span>
+                            Decidi meu próximo passo sem pressão sobre a outra pessoa.
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            O objetivo é sair do modo reação.
+                        </h3>
+
+                        <p class="lede" style="margin-top:1rem;">
+                            Quando você tem um processo para consultar,
+                            fica mais fácil separar aquilo que é uma decisão
+                            pensada daquilo que é apenas vontade de resolver
+                            a situação imediatamente.
+                        </p>
+
+                        <p class="cta-note" style="margin-top:1.2rem;">
+                            Os exemplos são ilustrativos e devem ser adaptados
+                            ao seu contexto.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             MENSAGENS
+             ======================================================== -->
+
+        <section class="messages">
+
+            <div class="wrap">
+
+                <div class="section-head">
+
+                    <span class="eyebrow">
+                        Biblioteca de comunicação
+                    </span>
+
+                    <h2>
+                        Menos improviso. Mais clareza.
+                    </h2>
+
+                    <p class="lede">
+                        O guia inclui uma biblioteca de textos para diferentes
+                        situações. A ideia não é copiar e colar uma fórmula,
+                        mas entender a intenção por trás de uma comunicação
+                        respeitosa.
+                    </p>
+
+                </div>
+
+
+                <div class="message-demo">
+
+                    <div class="message">
+
+                        <span class="message-label">
+                            Primeiro contato
+                        </span>
+
+                        <p>
+                            Exemplo de comunicação curta, sem pressão e
+                            sem transformar a mensagem em uma cobrança.
+                        </p>
+
+                    </div>
+
+
+                    <div class="message">
+
+                        <span class="message-label">
+                            Resposta curta
+                        </span>
+
+                        <p>
+                            Orientação para não transformar uma resposta
+                            breve em motivo para insistir ou prolongar
+                            artificialmente a conversa.
+                        </p>
+
+                    </div>
+
+
+                    <div class="message">
+
+                        <span class="message-label">
+                            Quando não existe abertura
+                        </span>
+
+                        <p>
+                            Critérios para reconhecer limites e entender
+                            quando respeitar o espaço da outra pessoa
+                            é a decisão correta.
+                        </p>
+
+                    </div>
+
+
+                    <p class="message-note">
+                        As mensagens do material são modelos de comunicação,
+                        não garantias de resposta ou de reconciliação.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             PARA QUEM É
+             ======================================================== -->
+
+        <section class="audience">
+
+            <div class="wrap">
+
+                <div class="section-head">
+
+                    <span class="eyebrow">
+                        Antes de comprar
+                    </span>
+
+                    <h2>
+                        Talvez este guia seja para você. Talvez não.
+                    </h2>
+
+                </div>
+
+
+                <div class="audience-grid">
+
+                    <div class="audience-card good">
+
+                        <span>
+                            Faz sentido se você
+                        </span>
+
+                        <ul>
+
+                            <li>
+                                terminou recentemente e está sem saber como agir;
+                            </li>
+
+                            <li>
+                                percebe que está tomando decisões por impulso;
+                            </li>
+
+                            <li>
+                                quer entender melhor o que aconteceu no relacionamento;
+                            </li>
+
+                            <li>
+                                quer trabalhar mudanças próprias antes de tentar qualquer contato;
+                            </li>
+
+                            <li>
+                                procura um processo organizado em vez de conselhos aleatórios.
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <div class="audience-card">
+
+                        <span>
+                            Não é para você se procura
+                        </span>
+
+                        <ul>
+
+                            <li>
+                                uma fórmula que garanta que alguém volte;
+                            </li>
+
+                            <li>
+                                técnicas para pressionar ou manipular outra pessoa;
+                            </li>
+
+                            <li>
+                                uma maneira de ignorar um pedido claro de espaço;
+                            </li>
+
+                            <li>
+                                uma promessa de resultado afetivo;
+                            </li>
+
+                            <li>
+                                substituir acompanhamento profissional por um e-book.
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             OFERTA
+             ======================================================== -->
+
+        <section class="pricing" id="oferta">
+
+            <div class="wrap">
+
+                <div class="section-head">
+
+                    <span class="eyebrow">
+                        Acesso ao guia
+                    </span>
+
+                    <h2>
+                        Comece pelo primeiro passo.
+                    </h2>
+
+                    <p class="lede">
+                        Um material completo para você consultar no seu
+                        próprio ritmo e voltar às ferramentas sempre que precisar.
+                    </p>
+
+                </div>
+
+
+                <div class="offer">
+
+                    <p class="offer-label">
+                        Reconquista · Guia completo
+                    </p>
+
+                    <div class="price">
+                        <b>R$ 37</b>
+                        <span>pagamento único</span>
+                    </div>
+
+                    <p class="offer-sub">
+                        Acesso ao material digital completo, com as três fases,
+                        exercícios, checklists, biblioteca de mensagens,
+                        matriz de decisão e materiais complementares.
+                    </p>
+
+
+                    <ul class="offer-list">
+
+                        <li>
+                            Guia completo em formato digital
+                        </li>
+
+                        <li>
+                            3 fases estruturadas
+                        </li>
+
+                        <li>
+                            Exercícios práticos
+                        </li>
+
+                        <li>
+                            Checklists de acompanhamento
+                        </li>
+
+                        <li>
+                            Biblioteca com modelos de comunicação
+                        </li>
+
+                        <li>
+                            Matriz de decisão
+                        </li>
+
+                        <li>
+                            Checklist resumido de 1 página
+                        </li>
+
+                    </ul>
+
+
+                    <!--
+                        TROQUE O #checkout pelo link real
+                        da sua plataforma de pagamento.
+                    -->
+
+                    <a class="btn btn-primary btn-full" href="https://pay.kiwify.com.br/ABN2Zqr">
+                        Quero o guia completo
+                    </a>
+
+                    <p class="offer-note">
+                        O botão acima deve ser conectado ao seu checkout.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             FAQ
+             ======================================================== -->
+
+        <section class="faq" id="faq">
+
+            <div class="wrap">
+
+                <div class="section-head">
+
+                    <span class="eyebrow">
+                        Dúvidas frequentes
+                    </span>
+
+                    <h2>
+                        Antes de começar.
+                    </h2>
+
+                </div>
+
+
+                <div class="faq-list">
+
+                    <details open>
+
+                        <summary>
+                            O guia garante que a pessoa vai voltar?
+                        </summary>
+
+                        <p>
+                            Não. Nenhum guia pode garantir a decisão de outra pessoa.
+                            O objetivo é ajudar você a organizar suas próprias ações,
+                            refletir sobre o relacionamento e se comunicar de forma
+                            mais consciente quando houver espaço para isso.
+                        </p>
+
+                    </details>
+
+
+                    <details>
+
+                        <summary>
+                            Preciso seguir as três fases exatamente?
+                        </summary>
+
+                        <p>
+                            As fases foram organizadas em uma sequência para facilitar
+                            o processo, mas o contexto de cada relacionamento é diferente.
+                            Use o material como uma estrutura de reflexão e adapte as
+                            ferramentas à sua situação.
+                        </p>
+
+                    </details>
+
+
+                    <details>
+
+                        <summary>
+                            O material tem mensagens prontas?
+                        </summary>
+
+                        <p>
+                            Sim. Existe uma biblioteca de modelos organizada por
+                            situações. Eles servem como referência de comunicação,
+                            não como fórmulas que precisam ser copiadas literalmente.
+                        </p>
+
+                    </details>
+
+
+                    <details>
+
+                        <summary>
+                            E se a outra pessoa pediu para não ser procurada?
+                        </summary>
+
+                        <p>
+                            Esse limite deve ser respeitado. O guia não deve ser usado
+                            para contornar uma recusa clara de contato ou insistir
+                            contra a vontade da outra pessoa.
+                        </p>
+
+                    </details>
+
+
+                    <details>
+
+                        <summary>
+                            Preciso estar solteiro para usar?
+                        </summary>
+
+                        <p>
+                            O material foi pensado para situações de término ou pausa
+                            em relacionamentos. Ele não deve ser usado para interferir
+                            em um relacionamento atual de outra pessoa ou incentivar
+                            desrespeito a limites existentes.
+                        </p>
+
+                    </details>
+
+
+                    <details>
+
+                        <summary>
+                            É terapia?
+                        </summary>
+
+                        <p>
+                            Não. É um material educacional e de auto-reflexão.
+                            Ele não substitui acompanhamento psicológico, psiquiátrico
+                            ou outro suporte profissional quando esse tipo de ajuda
+                            for necessário.
+                        </p>
+
+                    </details>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================
+             CTA FINAL
+             ======================================================== -->
+
+        <section class="final">
+
+            <div class="wrap final-inner">
+
+                <span class="eyebrow">
+                    Próximo passo
+                </span>
+
+                <h2>
+                    Você não precisa resolver tudo hoje.
+                    Precisa começar a organizar o próximo passo.
+                </h2>
+
+                <p class="lede">
+                    Comece pelo diagnóstico, percorra as três fases e use
+                    as ferramentas do guia para tomar decisões com mais
+                    calma e clareza.
+                </p>
+
+
+                <div class="final-actions">
+
+                    <a class="btn btn-primary" href="https://pay.kiwify.com.br/ABN2Zqr">
+                        Quero o Reconquista
+                    </a>
+
+                    <a class="btn btn-ghost" href="#faq">
+                        Tirar minhas dúvidas
+                    </a>
+
+                </div>
+
+                <p class="cta-note" style="margin-top:1.1rem;">
+                    Material digital · Acesso após a confirmação do pagamento.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ============================================================
+         FOOTER
+         ============================================================ -->
+
+    <footer class="site-foot">
+
+        <div class="wrap">
+
+            <div class="foot-top">
+
+                <a class="brand" href="#top">
+                    Reconquista<span class="brand-dot"></span>
+                </a>
+
+                <nav class="foot-links" aria-label="Links do rodapé">
+
+                    <a href="#metodo">
+                        O método
+                    </a>
+
+                    <a href="#conteudo">
+                        Conteúdo
+                    </a>
+
+                    <a href="#oferta">
+                        Oferta
+                    </a>
+
+                    <a href="#faq">
+                        Dúvidas
+                    </a>
+
+                </nav>
+
+            </div>
+
+
+            <p class="disclaimer">
+
+                <b>Aviso importante.</b>
+
+                O Reconquista é um material educacional voltado à reflexão,
+                comunicação e organização de decisões após um término.
+                Não é terapia e não garante qualquer resultado afetivo.
+
+                Nenhuma pessoa pode ser controlada ou convencida por uma
+                fórmula. O consentimento, os limites e a decisão da outra
+                pessoa devem ser respeitados.
+
+            </p>
+
+
+            <p class="copyright">
+                © 2026 Reconquista. Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
